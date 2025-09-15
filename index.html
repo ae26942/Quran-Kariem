@@ -105,7 +105,7 @@
     </div>
 
     <script>
-        const baseUrl = 'https://server6.mp3quran.net/ajm/';
+        const baseUrl = 'https://archive.org/download/AhmedAjamyFullQuran/';
         const surahNames = [
             '', 'الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف', 'الأنفال', 'التوبة',
             'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم',
@@ -183,7 +183,7 @@
             }).catch((error) => {
                 statusDiv.textContent = 'خطأ في تشغيل السورة، جارٍ المحاولة مع السورة التالية...';
                 console.error(error);
-                setTimeout(playNextSurah, 1000); // إعادة المحاولة بعد ثانية
+                setTimeout(() => playSurah(index), 1000); // إعادة المحاولة مع نفس السورة
             });
         }
 
