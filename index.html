@@ -181,7 +181,7 @@
                     ayahsContainer.style.display = 'block';
                 }
             } catch (error) {
-                statusDiv.textContent = 'خطأ في تشغيل السورة، تأكد من الاتصال بالإنترنت أو جرب لاحقًا.';
+                statusDiv.textContent = 'خطأ في تشغيل السورة: تأكد من الضغط على "تشغيل" أولاً أو تحقق من الإنترنت.';
                 console.error('Audio play error:', error);
                 playBtn.disabled = false;
                 stopBtn.disabled = true;
