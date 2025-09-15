@@ -105,7 +105,7 @@
     </div>
 
     <script>
-        const baseUrl = 'https://archive.org/download/AhmedAjamyFullQuran/';
+        const baseUrl = 'https://server6.mp3quran.net/ajm/';
         const surahNames = [
             '', 'الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف', 'الأنفال', 'التوبة',
             'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم',
@@ -158,7 +158,8 @@
             }
             const url = getSurahUrl(index);
             audioPlayer.src = url;
-            audioPlayer.play().then(async () => {
+            try {
+                await audioPlayer.play();
                 currentSurahDisplay.textContent = `السورة الحالية: ${surahNames[index]}`;
                 statusDiv.textContent = 'جاري التشغيل...';
                 playBtn.disabled = true;
@@ -169,7 +170,6 @@
                 isPlaying = true;
                 currentSurahIndex = index;
 
-                // جلب وعرض الآيات إذا كانت مرئية
                 if (ayahsVisible) {
                     const ayahs = await fetchAyahs(index);
                     ayahsContainer.innerHTML = '';
@@ -180,11 +180,13 @@
                     });
                     ayahsContainer.style.display = 'block';
                 }
-            }).catch((error) => {
-                statusDiv.textContent = 'خطأ في تشغيل السورة، جارٍ المحاولة مع السورة التالية...';
-                console.error(error);
-                setTimeout(() => playSurah(index), 1000); // إعادة المحاولة مع نفس السورة
-            });
+            } catch (error) {
+                statusDiv.textContent = 'خطأ في تشغيل السورة، تأكد من الاتصال بالإنترنت أو جرب لاحقًا.';
+                console.error('Audio play error:', error);
+                playBtn.disabled = false;
+                stopBtn.disabled = true;
+                isPlaying = false;
+            }
         }
 
         function playNextSurah() {
