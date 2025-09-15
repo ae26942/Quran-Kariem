@@ -105,7 +105,7 @@
     </div>
 
     <script>
-        const baseUrl = 'https://archive.org/download/AhmedAjamyFullQuran/';
+        const baseUrl = 'https://server6.mp3quran.net/ajm/';
         const surahNames = [
             '', 'الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف', 'الأنفال', 'التوبة',
             'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم',
@@ -224,7 +224,6 @@
                 ayahsContainer.style.display = 'block';
                 toggleAyahsBtn.textContent = 'إخفاء الآيات';
                 ayahsVisible = true;
-                // إعادة جلب الآيات إذا كانت السورة جارية
                 if (isPlaying) {
                     fetchAyahs(currentSurahIndex).then(ayahs => {
                         ayahsContainer.innerHTML = '';
