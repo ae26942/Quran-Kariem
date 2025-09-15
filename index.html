@@ -164,8 +164,8 @@
             currentSurahIndex = index;
             const surah = surahs[currentSurahIndex];
             const surahNumber = surah.number;
-            // Using a reliable audio source for Abdul Basit
-            const audioUrl = `https://download.quranicaudio.com/quran/abdul_baset_mujawwad/${String(surahNumber).padStart(3, '0')}.mp3`;
+            // Updated to working server7 links for Abdul Basit Mujawwad
+            const audioUrl = `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${String(surahNumber).padStart(3, '0')}.mp3`;
             const textUrl = `https://api.alquran.cloud/v1/surah/${surahNumber}/ar`;
 
             surahSelect.value = index;
